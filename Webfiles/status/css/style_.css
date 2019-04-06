@@ -1,0 +1,8 @@
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body { padding: 0; margin: 0; background: #FFF; border: 0; outline: 0; overflow: hidden; font-family: "Arial", sans-serif; font-size: 12px; }
+.newsblock table { width: 100%; font-size: 11px; border-collapse: collapse; white-space: nowrap; }
+.newsblock table tr td { padding: 6px 0;}
+.newsblock table tr td a { font-weight: bold; text-decoration: none; color: #888888; line-height: 1; font-size: 12px; display: block; }
+.newsblock table tr.row_1 td { padding-top: 0; }
+.newsblock table tr.row_6 td { background: none; }
+.newsblock table tr td.date { color: #176696; font-weight: bold;}

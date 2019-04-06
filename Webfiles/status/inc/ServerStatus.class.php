@@ -1,0 +1,45 @@
+<?php
+class ServerStatus {
+	var $hostRag;
+	var $hostSql;
+	var $userSql;
+	var $passSql;
+	var $baseSql;
+	
+	# Método construtor da classe.
+	function __construct($hostRag,$hostSql,$userSql,$passSql,$baseSql) {
+		$this->hostRag = gethostbyname($hostRag);
+		$this->hostSql = gethostbyname($hostSql);
+		$this->userSql = $userSql;
+		$this->passSql = $passSql;
+		$this->baseSql = $baseSql;
+	}
+	
+	# Método para conectar com o host:porta.
+	function connect( $host,$port ) {
+		# $fp receberá o retorno da função fsockopen.
+		$fp = @fsockopen( $host, $port, $errno, $errstr, 1.0 );
+		# $close receberá o retorno do método $this->close;
+		$close = $this->close( $fp );
+		# Irá retornar o valor de $fp.
+		return $fp;
+	}
+	
+	# Método para fechar a conexão.
+	function close( $fp ) {
+		# Chama a função fclose para fechar a conexão gerada em $fp.
+		@fclose( $fp );
+	}
+	
+	# Método de retorno do Status através de $port.
+	function getStatus($server) {
+		switch($server){
+			case "map": $port=5121; break;
+		}
+		# Retorna o retorno do método $this->connect.
+		 return (!empty($port))?$this->connect( $this->hostRag, $port ):'0';
+	}
+	
+}
+
+?>
